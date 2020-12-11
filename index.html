@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Julian's webpage</title>
+        <style>
+    body {
+        background: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
+        padding: 10px;
+        font-family: arial;
+    }
+    #all-contents {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    /* navigation menu */
+    nav {
+        background: rgb(255, 0, 0);
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: flex;
+        padding: 10px;
+    }
+    h1 {
+        display: flex;
+        align-items: center;
+        color: white;
+        flex: 1;
+        margin: 0;
+    }
+    #nav-ul {
+        list-style-image: none;
+    }
+    .nav-li {
+        display: inline-block;
+        padding: 0 10px;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    /* main container area beneath menu */
+    main {
+        background: rgb(0, 38, 255);
+        display: flex;
+    }
+    .sidebar {
+        margin-right: 25px;
+        padding: 10px;
+    }
+    .sidebar-img {
+        width: 200px;
+    }
+    .content {
+        flex: 1;
+        padding: 15px;
+    }
+    #interests {
+        border: 4px silver ridge;
+        padding: 8px;
+    }
+    h2, h3 {
+        margin: 0px;
+    }
+</style>
+    </head>
+    <body>
+        <!--All content goes here-->
+        <div id="all-contents">
+            #all-contents{
+                max-width: 800px;
+                margin: auto;
+            }
+            <nav>
+                <h1>Julian's bizzare website</h1>
+                <ul id="nav-ul">
+                    <li id="nav-li">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html">Portfolio</a>
+                    </li>
+                </ul>
+            </nav>
+            <main>
+                <!---sidebar section-->
+                <div class="sidebar">
+                    <img class="sidebar-img" src="https://cdn.vox-cdn.com/thumbor/-X9qGufVDNTcVa4SmkKPzFqQicY=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19870540/615197456.jpg.jpg" height=242 width=242>
+                </div>
+                <!--content section-->
+                <div class="content">
+                    <h2>Julian</h2>
+                    <p>student at Northshore High School</p>
+                    <!---intrests section-->
+                    <div class="interests">
+                        <h3>intrests</h3>
+                        <ul>
+                            <li>Fishing</li>
+                            <li>Playing video games</li>
+                            <li>Watching tv</li>
+                        </ul>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
