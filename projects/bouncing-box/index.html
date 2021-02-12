@@ -6,6 +6,7 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
+            
 			width: 70px;
 			height: 70px;
 			background-color: grey;
@@ -15,6 +16,8 @@
 			position: absolute;
 			top: 100px;
 			left: 500px;  /* <--- Change me! */
+            background-image:url(data:image/png;base64,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);
+            background-size: 70px 70px;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -23,7 +26,6 @@
 <body class="board">
 	<!-- HTML for the box -->
 	<div class="box">?</div>
-
 	<script>
 		(function(){
 			'use strict'
@@ -50,7 +52,7 @@
                 box.css("top", newPositionY);
             }
 
-			// changes the text displayed on the Box
+            // changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
 			}
