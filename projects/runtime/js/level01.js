@@ -16,9 +16,9 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY },
-                { "type": "reward", "x": 600, "y": groundY },
-                { "type": "enemy", "x": 900, "y": groundY },
+                { "type": "sawblade", "x": 400, "y": groundY-10 },
+                { "type": "sawblade", "x": 600, "y": groundY-60 },
+                { "type": "sawblade", "x": 900, "y": groundY-100 },
             ]
         };
         for(var i =0; i< levelData.gameItems.length; i++){
@@ -52,20 +52,37 @@ var level01 = function (window) {
         obstacleImage.y = hitZoneSize*-1;
     }
     function myObstacle(x, y){
-        createSawBlade(400, 190);
+        createSawBlade(1700, 190);
         createSawBlade(1000, 250);
         createSawBlade(1500, 150);
     }
     myObstacle(100, 200);
     var enemy = game.createGameItem('enemy', 25);
-    var redSquare = draw.rect(50, 100, 'purple');
+    var redSquare = draw.rect(50, 90, 'purple');
     redSquare.x = -25;
     redSquare.y = -25;
     enemy.addChild(redSquare);
     enemy.x = 400;
     enemy.y = groundY-50;
     game.addGameItem(enemy);
-    
+function createEnemy(x, y){
+    enemy.velocityX = -2;
+    enemy.rotationalVelocity = 0;
+    enemy.onPlayerCollision = function(){
+        console.log('The enemy has hit Halle!');
+        game.changeIntegrity(-20);
+    }
+    enemy.onProjectileCollision = function(){
+        console.log('Halle has it the enemy')
+        game.increaseScore(100);
+        enemy.fadeOut();
+    }
+}
+
+createEnemy(400, groundY-10);
+createEnemy(800, groundY-100);
+createEnemy(1200, groundY-50);
+
         // DO NOT EDIT CODE BELOW HERE
     }
 };
