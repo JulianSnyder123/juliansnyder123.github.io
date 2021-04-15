@@ -21,6 +21,8 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 900, "y": groundY-100 },
             ]
         };
+
+        /*
         for(var i =0; i< levelData.gameItems.length; i++){
             var firstObject = levelData.gameItems[i];
             var firstX = firstObject.x;
@@ -32,57 +34,59 @@ var level01 = function (window) {
                 createReward(firstX, firstY)
             }
         }
+
+        */
+
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
         game.setDebugMode(true);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
-
-    function createSawBlade(x, y){
+        function createSawBlade(x, y) {
         var hitZoneSize = 25;
         var damageFromObstacle = 10;
         var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
         sawBladeHitZone.x = x;
         sawBladeHitZone.y = y;
-        game.addGameItem(sawBladeHitZone);
+        game.addGameItem(sawBladeHitZone);    
         var obstacleImage = draw.bitmap('img/sawblade.png');
         sawBladeHitZone.addChild(obstacleImage);
         obstacleImage.x = hitZoneSize*-1;
         obstacleImage.y = hitZoneSize*-1;
-    }
-    function myObstacle(x, y){
-        createSawBlade(1700, 190);
+        sawBladeHitZone.rotationalVelocity = 20;
+        }
+        createSawBlade(400, 260);
+        createSawBlade(700, 190);
         createSawBlade(1000, 250);
-        createSawBlade(1500, 150);
-    }
-    myObstacle(100, 200);
-    var enemy = game.createGameItem('enemy', 25);
-    var redSquare = draw.rect(50, 90, 'purple');
-    redSquare.x = -25;
-    redSquare.y = -25;
-    enemy.addChild(redSquare);
-    enemy.x = 400;
-    enemy.y = groundY-50;
-    game.addGameItem(enemy);
-function createEnemy(x, y){
-    enemy.velocityX = -2;
-    enemy.rotationalVelocity = 0;
-    enemy.onPlayerCollision = function(){
-        console.log('The enemy has hit Halle!');
+        function deathWorm(x, y){
+            createSawBlade(x, y)
+            createSawBlade(x+40, y+25)
+            createSawBlade(x+80, y+50)
+            createSawBlade(x+120, y+25)
+            createSawBlade(x+160, y)
+            createSawBlade(x+200, y+25)
+            createSawBlade(x+240, y+50)
+            createSawBlade(x+280, y+25)
+            createSawBlade(x+320, y)
+            createSawBlade(x+360, y+25)
+            createSawBlade(x+400, y+50)
+        }
+        deathWorm(1300, 130)
+
+        var enemy = game.createGameItem('enemy',25);
+        var redSquare = draw.rect(50,100,'purple');
+        redSquare.x = -25;
+        redSquare.y = -50;
+        enemy.addChild(redSquare);
+        enemy.x = 1620;
+        enemy.y = groundY-25;
+        game.addGameItem(enemy);
+        enemy.velocityX = -2;
+        enemy.onPlayerCollision = function() {
+        console.log('The enemy has hit Halle');
         game.changeIntegrity(-20);
-    }
-    enemy.onProjectileCollision = function(){
-        console.log('Halle has it the enemy')
-        game.increaseScore(100);
-        enemy.fadeOut();
-    }
-}
-
-createEnemy(400, groundY-10);
-createEnemy(800, groundY-100);
-createEnemy(1200, groundY-50);
-
+        };
         // DO NOT EDIT CODE BELOW HERE
     }
 };
