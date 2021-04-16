@@ -16,13 +16,19 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY-10 },
-                { "type": "sawblade", "x": 600, "y": groundY-60 },
-                { "type": "sawblade", "x": 900, "y": groundY-100 },
+                { "type": "sawblade", "x": 400, "y": groundY-100 },
+                { "type": "sawblade", "x": 700, "y": groundY },
+                { "type": "sawblade", "x": 1000, "y": groundY },
+                { "type": "enemy", "x": 1600, "y": groundY-30 },
+                { "type": "enemy", "x": 850, "y": groundY-30 },
+                { "type": "enemy", "x": 3000, "y": groundY-30 },
+                { "type": "reward", "x": 2080, "y": groundY-20 },
+                { "type": "deathWorm", "x": 1300, "y": groundY-130 },
+                { "type": "deathWorm", "x": 2000, "y": groundY+15 },
             ]
         };
 
-        /*
+        
         for(var i =0; i< levelData.gameItems.length; i++){
             var firstObject = levelData.gameItems[i];
             var firstX = firstObject.x;
@@ -32,10 +38,14 @@ var level01 = function (window) {
                 createSawBlade(firstX, firstY);
             }else if (firstObject.type === "reward"){
                 createReward(firstX, firstY)
+            }else if (firstObject.type === "enemy"){
+                enemy(firstX, firstY)
+            }else if (firstObject.type === "deathWorm"){
+                deathWorm(firstX, firstY) 
             }
         }
 
-        */
+        
 
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
@@ -44,21 +54,21 @@ var level01 = function (window) {
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
         function createSawBlade(x, y) {
-        var hitZoneSize = 25;
-        var damageFromObstacle = 10;
-        var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-        sawBladeHitZone.x = x;
-        sawBladeHitZone.y = y;
-        game.addGameItem(sawBladeHitZone);    
-        var obstacleImage = draw.bitmap('img/sawblade.png');
-        sawBladeHitZone.addChild(obstacleImage);
-        obstacleImage.x = hitZoneSize*-1;
-        obstacleImage.y = hitZoneSize*-1;
-        sawBladeHitZone.rotationalVelocity = 20;
+            var hitZoneSize = 25;
+            var damageFromObstacle = 10;
+            var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+            sawBladeHitZone.x = x;
+            sawBladeHitZone.y = y;
+            game.addGameItem(sawBladeHitZone);    
+            var obstacleImage = draw.bitmap('img/sawblade.png');
+            sawBladeHitZone.addChild(obstacleImage);
+            obstacleImage.x = hitZoneSize*-1;
+            obstacleImage.y = hitZoneSize*-1;
+            sawBladeHitZone.rotationalVelocity = 20;
         }
-        createSawBlade(400, 260);
-        createSawBlade(700, 190);
-        createSawBlade(1000, 250);
+
+
+
         function deathWorm(x, y){
             createSawBlade(x, y)
             createSawBlade(x+40, y+25)
@@ -72,21 +82,50 @@ var level01 = function (window) {
             createSawBlade(x+360, y+25)
             createSawBlade(x+400, y+50)
         }
-        deathWorm(1300, 130)
 
-        var enemy = game.createGameItem('enemy',25);
-        var redSquare = draw.rect(50,100,'purple');
-        redSquare.x = -25;
-        redSquare.y = -50;
-        enemy.addChild(redSquare);
-        enemy.x = 1620;
-        enemy.y = groundY-25;
-        game.addGameItem(enemy);
-        enemy.velocityX = -2;
-        enemy.onPlayerCollision = function() {
-        console.log('The enemy has hit Halle');
-        game.changeIntegrity(-20);
-        };
+
+
+        function enemy(x, y){
+            var enemy = game.createGameItem('enemy',25);
+            var purpleSquare = draw.rect(50,100,'purple');
+            purpleSquare.x = -25;
+            purpleSquare.y = -50;
+            enemy.addChild(purpleSquare);
+            enemy.x = x;
+            enemy.y = y;
+            game.addGameItem(enemy);
+            enemy.velocityX = -2;
+            enemy.onPlayerCollision = function() {
+                console.log('The enemy has hit Halle');
+                game.changeIntegrity(-20);
+            };
+            enemy.onProjectileCollision = function(){
+                    console.log('Halle has hit the enemy');
+                    enemy.shrink();
+            }
+        }
+
+
+
+
+
+            function createReward(x, y){
+                var reward = game.createGameItem('reward',25);
+                var blueSquare = draw.rect(50,50,'blue');
+                 blueSquare.x = -25;
+                 blueSquare.y = -25;
+                reward.addChild(blueSquare);
+                reward.x = x;
+                reward.y = y;
+                game.addGameItem(reward);
+                reward.velocityX = -2;
+                reward.onPlayerCollision = function() {
+                    console.log('Halle has collected a reward');
+                    game.changeIntegrity(20);
+                };
+            }
+
+
         // DO NOT EDIT CODE BELOW HERE
     }
 };
