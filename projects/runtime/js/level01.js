@@ -122,6 +122,7 @@ var level01 = function (window) {
                 reward.onPlayerCollision = function() {
                     console.log('Halle has collected a reward');
                     game.changeIntegrity(20);
+                    reward.fade();
                 };
             }
 
