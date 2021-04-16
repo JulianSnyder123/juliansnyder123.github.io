@@ -102,6 +102,7 @@ var level01 = function (window) {
             enemy.onProjectileCollision = function(){
                     console.log('Halle has hit the enemy');
                     enemy.shrink();
+                    HTMLAudioElement.updateScore(100);
             }
         }
 
@@ -121,8 +122,9 @@ var level01 = function (window) {
                 reward.velocityX = -2;
                 reward.onPlayerCollision = function() {
                     console.log('Halle has collected a reward');
-                    game.changeIntegrity(20);
+                    game.changeIntegrity(+20);
                     reward.fade();
+                    hud.updateScore(50);
                 };
             }
 
