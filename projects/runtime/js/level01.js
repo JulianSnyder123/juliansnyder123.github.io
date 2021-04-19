@@ -94,7 +94,7 @@ var level01 = function (window) {
             enemy.x = x;
             enemy.y = y;
             game.addGameItem(enemy);
-            enemy.velocityX = -2;
+            enemy.velocityX = -3;
             enemy.onPlayerCollision = function() {
                 console.log('The enemy has hit Halle');
                 game.changeIntegrity(-20);
@@ -119,7 +119,7 @@ var level01 = function (window) {
                 reward.x = x;
                 reward.y = y;
                 game.addGameItem(reward);
-                reward.velocityX = -2;
+                reward.velocityX = -3;
                 reward.onPlayerCollision = function() {
                     console.log('Halle has collected a reward');
                     game.changeIntegrity(+20);
