@@ -1,0 +1,64 @@
+
+body {
+    background-color: darkgreen;
+    
+  }
+
+  #board {
+    width: 440px;
+    height: 440px;
+    border: 1px solid white;
+    background-color: grey;
+    position: absolute;
+  }
+
+  #kanye {
+    width: 440px;
+    height: 440px;
+  }
+  
+  #score1 {
+      position: absolute;
+  }
+
+  #score2 {
+    position: absolute;
+    left: 340px;
+}
+
+  #pattle1 {
+    background-color: white;
+    width: 20px;
+    height: 80px;
+    position: absolute;
+    left: 10px; 
+    top: 200px;
+  }
+
+  #steve {
+    width: 20px;
+    height: 80px
+  }
+
+  #pattle2 {
+    background-color: black;
+    width: 20px;
+    height: 80px;
+    position: absolute;
+    left: 410px;
+    top: 200px;
+  }
+
+  #freddy {
+    width: 20px;
+    height: 80px
+  }
+
+  #ball {
+      background-color: red;
+      width: 20px;
+      height: 20px;
+      border-radius: 100px;
+      position: absolute;
+  }
+
