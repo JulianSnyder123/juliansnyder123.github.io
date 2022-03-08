@@ -1,8 +1,9 @@
 /* global $, sessionStorage */
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-  
+
 function runProgram(){
+  
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +46,7 @@ function runProgram(){
       //tells the document what to execute when a key is pressed up or down
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', handleKeyUp);
-  startBall();
+  startBall()
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +69,7 @@ function runProgram(){
   /* 
   Called in response to events.
   */
- 
+ // tells the computer what to do when a button is held down
   function handleKeyDown(event) {
 
     if(event.which === KEYCODE.UP){
@@ -81,7 +82,7 @@ function runProgram(){
       pattle1.speedY = 8
     }
   }
-
+  // tells the computer what to do when a button is held 
   function handleKeyUp(event) {
     if(event.which === KEYCODE.UP){
       pattle2.speedY = 0
@@ -97,6 +98,7 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+  //
   function doCollide(obj1, obj2) {
     // TODO: calculate and store the remaining
     // sides of the square1

@@ -3,6 +3,8 @@ body {
     background-color: darkgreen;
     
   }
+  
+
 
   #board {
     width: 440px;
@@ -12,13 +14,14 @@ body {
     position: absolute;
   }
 
-  #kanye {
+  #boardBackground {
     width: 440px;
     height: 440px;
   }
   
   #score1 {
       position: absolute;
+      color: white
   }
 
   #score2 {
