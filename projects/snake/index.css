@@ -11,12 +11,17 @@ body {
   position: relative;
 }
 
+.background {
+  width: 440px;
+  height: 440px;
+}
+
 #message {
   color: red
 }
 
 #apple {
-  background-color: red;
+  background-color: yellow;
   width: 20px;
   height: 20px;
   position: absolute;
@@ -27,7 +32,6 @@ body {
 
 .snake, #snake{
   background-color: pink;
-  border: 1px solid black;
   width: 20px;
   height: 20px;
   position: absolute;
@@ -36,7 +40,6 @@ body {
 
 #snakeHead {
   background-color: pink;
-  border: 1px solid black;
   width: 20px;
   height: 20px;
   position: absolute;
