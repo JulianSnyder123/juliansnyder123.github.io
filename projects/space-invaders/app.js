@@ -9,9 +9,10 @@ let goingRight = true
 let aliensRemoved = []
 let results = 0
 
-var audio = new Audio('images/bruh.mp3');
-var audio2 = new Audio('images/oof.mp3');
-
+var audio = new Audio('audio/bruh.mp3');
+var audio2 = new Audio('audio/taco-bell.mp3');
+var audio3 = new Audio('audio/nice.mp3');
+var audio4 = new Audio('audio/gta5-wasted.mp3');
 
 for (let i = 0; i < 225; i++){
     const square = document.createElement('div')
@@ -96,17 +97,20 @@ function moveInvaders(){
     //tells the program to stop when an alien touches the shooter
     if(squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
         resultsDisplay.innerHTML = 'GAME OVER'
+        audio4.play();
         clearInterval(invadersId)
     }
 
     for (let i = 0; i < alienInvaders.length; i++){
         if(alienInvaders[i] > squares.length ){
             resultsDisplay.innerHTML = 'GAME OVER'
+            audio4.play();
             clearInterval(invadersId)
         }
     }
     if (aliensRemoved.length === alienInvaders.length) {
         resultsDisplay.innerHTML = 'YOU WIN'
+        audio3.play();
         clearInterval(invadersId)
     }
 }
